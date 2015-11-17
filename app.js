@@ -194,8 +194,12 @@ myApp.factory('pizza', ['$window', '$http', function(win, $http) {
 }	;
             
                 var pizza = [{ "name": "NEW", "toppings": [ ] }];
-                var i = pizzaFactory.getRandomArbitrary(0, allToppings.Vegetables.length);
+                var i = pizzaFactory.getRandomArbitrary(0, allToppings.Meats.length);
+                pizza[0].toppings.push(allToppings.Meats[i]);
+                i = pizzaFactory.getRandomArbitrary(0, allToppings.Vegetables.length);
                 pizza[0].toppings.push(allToppings.Vegetables[i]);
+                i = pizzaFactory.getRandomArbitrary(0, allToppings.Cheese.length);
+                pizza[0].toppings.push(allToppings.Cheese[i]);
 
                 return pizza;
 }
