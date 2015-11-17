@@ -9,27 +9,6 @@
   
 </head>
 <body ng-app="spicyApp1">
-<<<<<<< HEAD
-<img src="Pepperoni_Lovers_Pizza.png"/>
- <div ng-controller="SpicyController">
-	<p>Vegetables</p>
-	 <div ng-repeat="n in toppings.Vegetables track by $index">
-	  <button ng-click="addIngredient(n)">Add {{n}}</button>
-	 </div>
-	 <p>Meats</p>
-	 <div ng-repeat="n in toppings.Meats track by $index">
-	  <button ng-click="addIngredient(n)">Add {{n}}</button>
-	 </div>	
-	 <p>Nuts</p>
-	 <div ng-repeat="n in toppings.Nuts track by $index">
-	  <button ng-click="addIngredient(n)">Add {{n}}</button>
-	 </div>
-  
-  <strong>The pizza is currently with:</strong>
-	<div ng-repeat="n in currentIngredints track by $index">
-		<button ng-click="removeIngredient($index)">{{n}}</button>
-
-=======
 	<img src="Pepperoni_Lovers_Pizza.png"/>
 	<div ng-controller="SpicyController">
 		<div ng-repeat="pizza in konwnPizzas track by $index">
@@ -39,7 +18,6 @@
 				<li ng-repeat="i in pizza.toppings track by $index">{{ i }}</li>
 			<ul>
 		</div>
->>>>>>> 6b2782967b7124cc1a1d18ada7fe2000b3638400
 	</div>
 </body>
 </html>
