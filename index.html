@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pizza4netflix&chill</title>
+  
+
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.min.js"></script>
+  <script src="app.js"></script>
+  
+
+  
+</head>
+<body ng-app="spicyApp1">
+<img src="Pepperoni_Lovers_Pizza.png"/>
+ <div ng-controller="SpicyController">
+	<p>Vegetables</p>
+	 <div ng-repeat="n in toppings.Vegetables track by $index">
+	  <button ng-click="addIngredient(n)">Add {{n}}</button>
+	 </div>
+	 	<p>Meats</p>
+	 <div ng-repeat="n in toppings.Meats track by $index">
+	  <button ng-click="addIngredient(n)">Add {{n}}</button>
+	 </div>	
+	 <p>Nuts</p>
+	 <div ng-repeat="n in toppings.Nuts track by $index">
+	  <button ng-click="addIngredient(n)">Add {{n}}</button>
+	 </div>
+  
+  
+  <strong>The pizza is currently with:</strong>
+	<div ng-repeat="n in currentIngredints track by $index">
+		<button ng-click="removeIngredient($index)">{{n}}</button>
+
+	</div>
+  
+ 
+</div>
+</body>
+</html>
