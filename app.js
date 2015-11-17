@@ -62,10 +62,10 @@ myApp.factory('pizza', ['$window', '$http', function(win, $http) {
                 console.log(angular.fromJson(data));
                 //data.Vegetables[2];
                 
-                var pizza = [{ "name": "NEW", "toppings": [] } ];
-                pizza[0].toppings.push(data.Vegetables[2]);
+                var pizza = [{ "name": "NEW", "toppings": [ "Bacon"] }];
+                //pizza[0].toppings.push(data.Vegetables[2]);
 
-                
+                return pizza[0];
             });
         }
 
