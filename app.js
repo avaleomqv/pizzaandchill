@@ -9,6 +9,34 @@ myApp.controller('SpicyController', ['$scope', '$http', function($scope, $http) 
 		$scope.toppings = data;
 	});
 	
+	$scope.konwnPizzas = [
+    {
+        "name": "Hawaii",
+        "toppings": [
+            "Pineapple",
+            "Cheese",
+            "Ham"
+        ]
+    },
+    {
+        "name": "Lars",
+        "toppings": [
+            "Bacon",
+            "Cocktailpølser"
+        ]
+    },
+    {
+        "name": "Jul",
+        "toppings": [
+            "Duck"
+        ]
+    }
+];
+	
+	$scope.orderPizza = function(id) {
+		alert("ordered pizza: " +$scope.konwnPizzas[id].name);
+	}
+	
 	$scope.currentIngredints = [ ];
 		
 	$scope.addIngredient = function(ingredient) {
