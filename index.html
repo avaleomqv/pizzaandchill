@@ -9,12 +9,21 @@
 
 </head>
 <body ng-app="spicyApp1">
-<!--<marquee>PIZZA AND CHILL</marquee>-->
+<marquee><h1>PIZZA AND CHILL</h1></marquee>
 	<img src="Pepperoni_Lovers_Pizza.png"/>
 	<div ng-controller="SpicyController">
-		<div>
+		<div ng-show="newPizza.length <= 0">
 			<button ng-click="getPizza()">New Pizza</button>
+		</div>
+		<div ng-show="newPizza.length > 0">
+
 			<p ng-repeat="i in newPizza">Pizza med {{i.toppings.join(', ')}}</p>
+			<p>
+			<label for="textEdit">Pizza name:</label>
+			<input id="textEdit" type="text" ng-model="pizzaName"/>
+			</p>
+			<img src="/tinderNo.png" ng-click="getPizza()"/>
+			<img src="/tinderYes.png" ng-click="storePizza(pizzaName)"/>
 		</div>
 		
 		<hr>
