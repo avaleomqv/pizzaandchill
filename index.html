@@ -6,12 +6,20 @@
   
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.min.js"></script>
   <script src="app.js"></script>
-  
+
 </head>
 <body ng-app="spicyApp1">
+<!--<marquee>PIZZA AND CHILL</marquee>-->
 	<img src="Pepperoni_Lovers_Pizza.png"/>
 	<div ng-controller="SpicyController">
-		<div ng-repeat="pizza in konwnPizzas track by $index">
+		<div>
+			<button ng-click="getPizza()">New Pizza</button>
+			<p ng-repeat="i in newPizza">Pizza med {{i.toppings.join(', ')}}</p>
+		</div>
+		
+		<hr>
+		
+		<div ng-repeat="pizza in konwnPizzas">
 			<strong>{{ pizza.name }}</strong>
 			<button ng-click="orderPizza($index)">Order</button>
 			<ul>
