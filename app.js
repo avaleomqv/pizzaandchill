@@ -55,14 +55,42 @@ myApp.controller('SpicyController', ['$scope', '$http', 'pizza', function($scope
 
 }]);
 
-myApp.
-  factory('pizza', ['$window', function(win) {
-    return {
-      getPizza: function() {
-        return [
-          { "name": "NEW", "toppings": [ "Bacon", "Cocktailpølser" ] }
-        ];
-    }
-    }
+myApp.factory('pizza', ['$window', '$http', function(win, $http) {
+    var pizzaFactory = {};
+    
+        pizzaFactory.getPizza = function() {
+            $http.get('/toppings.json').success(function(data) {
+                console.log(angular.fromJson(data));
+                //data.Vegetables[2];
+                
+                var pizza = [{ "name": "NEW", "toppings": [] } ];
+                pizza[0].toppings.push(data.Vegetables[2]);
+
+                
+            });
+        }
+
+      pizzaFactory.getRandomIngredients = function() {
+        var ingredients = pizzaFactory.getAllToppings();
+        
+        // TODO get 3 toppings and return them in a comma separated string
+        var i = pizzaFactory.getRandomArbitrary(0, 4);
+        
+        return "Bacon";
+      };
+      
+      pizzaFactory.getOldPizza = function() {
+          var pizza = [{ "name": "NEW", "toppings": [] } ];
+          pizza[0].toppings.push(pizzaFactory.getRandomIngredients())
+          
+        return pizza;
+      };
+      
+      // Returns a random number between min (inclusive) and max (exclusive)
+      pizzaFactory.getRandomArbitrary = function(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+      
+      return pizzaFactory;
   }]);
 })(window.angular);
