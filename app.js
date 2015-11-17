@@ -37,20 +37,19 @@ myApp.controller('SpicyController', ['$scope', '$http', 'pizza', function($scope
 	$scope.orderPizza = function(id) {
 		alert("ordered pizza: " +$scope.konwnPizzas[id].name);
 	}
-	
-	$scope.currentIngredints = [ ];
-		
-	$scope.addIngredient = function(ingredient) {
-		$scope.currentIngredints.push(ingredient);
-	};
-	
-	$scope.removeIngredient = function(index) {
-		alert($scope.currentIngredints[index]);
-		$scope.currentIngredints.splice(index, 1);	
-	}
     
     $scope.getPizza = function() {
       $scope.newPizza = pizza.getPizza();
+    }
+
+    $scope.storePizza = function(name) {
+        $scope.newPizza[0].name = name;
+        $scope.konwnPizzas.push($scope.newPizza[0]);
+        $scope.getPizza();
+    }
+
+    $scope.storeNewPizza = function(pizza) {
+        $scope.newPizza[0] = pizza;
     }
 
 }]);
