@@ -37,17 +37,6 @@ myApp.controller('SpicyController', ['$scope', '$http', 'pizza', function($scope
 	$scope.orderPizza = function(id) {
 		alert("ordered pizza: " +$scope.konwnPizzas[id].name);
 	}
-	
-	$scope.currentIngredints = [ ];
-		
-	$scope.addIngredient = function(ingredient) {
-		$scope.currentIngredints.push(ingredient);
-	};
-	
-	$scope.removeIngredient = function(index) {
-		alert($scope.currentIngredints[index]);
-		$scope.currentIngredints.splice(index, 1);	
-	}
     
     $scope.getPizza = function() {
       $scope.newPizza = pizza.getPizza();
