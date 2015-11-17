@@ -48,6 +48,10 @@ myApp.controller('SpicyController', ['$scope', '$http', 'pizza', function($scope
         $scope.getPizza();
     }
 
+    $scope.storeNewPizza = function(pizza) {
+        $scope.newPizza[0] = pizza;
+    }
+
 }]);
 
 myApp.
