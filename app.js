@@ -192,14 +192,32 @@ myApp.factory('pizza', ['$window', '$http', function(win, $http) {
         "Venison"
     ]
 }	;
+
+var pizzaNameSuggestions = { "Name": ["Mads", "Jon", "Pizza Margherita",
+   "Pizza Marinara",
+   "Pizza Alla Napoletana",
+   "Pizza Capricciosa",
+   "Pizza Pugliese",
+   "Pizza Veronese",
+   "Pizza Ai Quattro Formagi",
+   "Pizza Quattro Stagioni",
+   "Pizza Ai Funghi e Salsicce",
+   "Pomodoro Pachino and Rughetta",
+   "Pizza al taglio",
+   "Pizza Focaccia",
+   "Sfincione"] };
+
             
-                var pizza = [{ "name": "NEW", "toppings": [ ] }];
+                var pizza = [{ "name": "", "toppings": [ ] }];
                 var i = pizzaFactory.getRandomArbitrary(0, allToppings.Meats.length);
                 pizza[0].toppings.push(allToppings.Meats[i]);
                 i = pizzaFactory.getRandomArbitrary(0, allToppings.Vegetables.length);
                 pizza[0].toppings.push(allToppings.Vegetables[i]);
                 i = pizzaFactory.getRandomArbitrary(0, allToppings.Cheese.length);
                 pizza[0].toppings.push(allToppings.Cheese[i]);
+
+                i = pizzaFactory.getRandomArbitrary(0, pizzaNameSuggestions.Name.length);
+                pizza[0].name = pizzaNameSuggestions.Name[i];
 
                 return pizza;
 }
