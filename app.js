@@ -58,26 +58,147 @@ myApp.factory('pizza', ['$window', '$http', function(win, $http) {
     var pizzaFactory = {};
     
         pizzaFactory.getPizza = function() {
-            $http.get('/toppings.json').success(function(data) {
-                console.log(angular.fromJson(data));
-                //data.Vegetables[2];
-                
-                var pizza = [{ "name": "NEW", "toppings": [ "Bacon"] }];
-                //pizza[0].toppings.push(data.Vegetables[2]);
+            var allToppings = {
+    "Vegetables": [
+        "Alfalfa Sprouts",
+        "Artichoke hearts",
+        "Avocado",
+        "Baby leeks",
+        "Beetroot",
+        "Black Beans",
+        "Broccoli",
+        "Capers",
+        "Capicolla",
+        "Carrot",
+        "Cherry tomatoes",
+        "Dried tomatoes",
+        "Eggplant",
+        "Fungi",
+        "Fungi carciofi",
+        "Green peppers",
+        "Kalamata olives",
+        "Lettuce",
+        "Mushrooms",
+        "Onions",
+        "Olives",
+        "Peas",
+		"Pineapple",
+        "Porcini mushrooms",
+        "Portobello Mushrooms",
+        "Red beans",
+        "Red onions",
+        "Red peppers",
+        "Roast cauliflower",
+        "Roasted eggplant",
+        "Roasted Garlic",
+        "Roasted peppers",
+        "scallions",
+        "Shallots",
+        "Snow peas",
+        "Spinach",
+        "Sun dried tomatoes",
+        "Sweet corn",
+        "Watercress",
+        "Wild mushrooms",
+        "Yellow peppers",
+        "Yellow squash",
+        "Zucchini"
+    ],
+    "Nuts": [
+        "Almonds",
+        "Peanuts",
+        "Pistachios",
+        "Pecans",
+        "Pine Nuts",
+        "Walnuts"
+    ],
+    "Spices": [
+        "Basil",
+        "Bay Leaf",
+        "Cardamon",
+        "Chili Dried or Fresh",
+        "Chives",
+        "Cilantro",
+        "Coriander",
+        "Cumin",
+        "Dill",
+        "Garlic",
+        "JalapenoPeppers",
+        "Laurel",
+        "Marjoram",
+        "MethiLeaves(akaFenugreek)",
+        "Oregano",
+        "Parley",
+        "Pepper",
+        "Rosemary",
+        "Basil",
+        "BayLeaf",
+        "Cardamon"
+    ],
+    "SeaFood": [
+        "Anchovies",
+        "CajunPrawn",
+        "Crayfish",
+        "Lobster",
+        "Oysters",
+        "Prawns",
+        "Salmon",
+        "Shrimps",
+        "SmokedSalmon",
+        "Squid",
+        "Tuna",
+        "Whitebait"
+    ],
+    "Cheese": [
+        "BlueCheese",
+        "Brie",
+        "Camembert",
+        "Chedar",
+        "Colby",
+        "Feta",
+        "GoatCheese",
+        "Gorgonzola",
+        "Limburger",
+        "Manchego",
+        "MontereyJack",
+        "Parmesan",
+        "Mozzarella",
+        "Muenster",
+        "PortdeSalut",
+        "Provolone",
+        "Ricota",
+        "Romano",
+        "Roquefort",
+        "SmokedGouda"
+    ],
+    "Meats": [
+        "Bacon",
+        "BBQChicken",
+        "Beef",
+        "CajunChicken",
+        "ChickenMasala",
+        "ChickenTikka",
+        "Chorizo",
+        "Duck",
+        "Ham",
+        "HoneyCuredHam",
+        "Meatballs",
+        "Pepperoni",
+        "Proscuitto",
+        "Salami",
+        "Sausage",
+        "SerranoHam",
+        "Turkey",
+        "Venison"
+    ]
+}	;
+            
+                var pizza = [{ "name": "NEW", "toppings": [ ] }];
+                var i = pizzaFactory.getRandomArbitrary(0, allToppings.Vegetables.length);
+                pizza[0].toppings.push(allToppings.Vegetables[i]);
 
-                return pizza[0];
-            });
-        }
-
-      pizzaFactory.getRandomIngredients = function() {
-        var ingredients = pizzaFactory.getAllToppings();
-        
-        // TODO get 3 toppings and return them in a comma separated string
-        var i = pizzaFactory.getRandomArbitrary(0, 4);
-        
-        return "Bacon";
-      };
-      
+                return pizza;
+}
       pizzaFactory.getOldPizza = function() {
           var pizza = [{ "name": "NEW", "toppings": [] } ];
           pizza[0].toppings.push(pizzaFactory.getRandomIngredients())
@@ -87,7 +208,7 @@ myApp.factory('pizza', ['$window', '$http', function(win, $http) {
       
       // Returns a random number between min (inclusive) and max (exclusive)
       pizzaFactory.getRandomArbitrary = function(min, max) {
-        return Math.random() * (max - min) + min;
+        return Math.floor(Math.random() * (max - min)) + min;
       }
       
       return pizzaFactory;
