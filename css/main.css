@@ -1,0 +1,19 @@
+body {
+	background-color: #239f85;
+}
+section {
+	margin: 0 35%;
+	width: 30%;
+	float: left;
+	background-color: #29bb9c;
+}
+section img#pizza {
+	width: 70%;
+	padding: 0 15% 48px 15%;
+}
+h1 {
+	color: #e54d42;
+	text-align: center;
+	font-family: 'Amatic SC', cursive;
+	font-size: 60px
+}

@@ -10,47 +10,25 @@ myApp.controller('SpicyController', ['$scope', '$http', 'pizza', function($scope
 	});
 	
     $scope.newPizza = [];
-	$scope.konwnPizzas = [
-        {
-            "name": "Hawaii",
-            "toppings": [
-                "Pineapple",
-                "Cheese",
-                "Ham"
-            ]
-        },
-        {
-            "name": "Lars",
-            "toppings": [
-                "Bacon",
-                "Cocktailpølser"
-            ]
-        },
-        {
-            "name": "Jul",
-            "toppings": [
-                "Duck"
-            ]
-        }
-    ];
+	$scope.pizzaWishlist = [];
 	
 	$scope.orderPizza = function(id) {
-		alert("ordered pizza: " +$scope.konwnPizzas[id].name);
-	}
+		alert("ordered pizza: " +$scope.pizzaWishlist[id].name);
+	};
     
     $scope.getPizza = function() {
       $scope.newPizza = pizza.getPizza();
-    }
+    };
 
     $scope.storePizza = function(name) {
         $scope.newPizza[0].name = name;
-        $scope.konwnPizzas.push($scope.newPizza[0]);
+        $scope.pizzaWishlist.push($scope.newPizza[0]);
         $scope.getPizza();
-    }
+    };
 
     $scope.storeNewPizza = function(pizza) {
         $scope.newPizza[0] = pizza;
-    }
+    };
 
 }]);
 

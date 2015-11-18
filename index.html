@@ -1,40 +1,48 @@
 <!doctype html>
-<html lang="en">
+<html class="no-js" lang="da">
 <head>
-  <meta charset="UTF-8">
-  <title>Pizza4netflix&chill</title>
-  
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.min.js"></script>
-  <script src="app.js"></script>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Pizza</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.min.js"></script>
+	<script src="app.js"></script>
+
+	<link href='https://fonts.googleapis.com/css?family=Indie+Flower|Amatic+SC' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/main.css">
 </head>
 <body ng-app="spicyApp1">
-<marquee><h1>PIZZA AND CHILL</h1></marquee>
-	<img src="Pepperoni_Lovers_Pizza.png"/>
-	<div ng-controller="SpicyController">
-		<div ng-show="newPizza.length <= 0">
-			<button ng-click="getPizza()">New Pizza</button>
+	<section>
+	<h1>PIZZA AND CHILL</h1>
+		<img id="pizza" src="images/Pepperoni_Lovers_Pizza.png">
+		<!--<img src="images/pad_white.jpg">-->
+		<div ng-controller="SpicyController">
+			<div ng-show="newPizza.length <= 0">
+				<button ng-click="getPizza()">New Pizza</button>
+			</div>
+			<div ng-show="newPizza.length > 0">
+	
+				<p ng-repeat="i in newPizza">Pizza med {{i.toppings.join(', ')}}</p>
+				<p>
+				<label for="textEdit">Pizza name:</label>
+				<input id="textEdit" type="text" ng-model="newPizza[0].name"/>
+				</p>
+				<img src="images/tinderNo.png" ng-click="getPizza()"/>
+				<img src="images/tinderYes.png" ng-click="storePizza(newPizza[0].name)"/>
+			</div>
+			
+			<h1>Wishlist</h1>
+			<div ng-repeat="pizza in pizzaWishlist">
+				<strong>{{ pizza.name }}</strong>
+				<button ng-click="orderPizza($index)">Order</button>
+				<ul>
+					<li ng-repeat="i in pizza.toppings track by $index">{{ i }}</li>
+				<ul>
+			</div>
 		</div>
-		<div ng-show="newPizza.length > 0">
-
-			<p ng-repeat="i in newPizza">Pizza med {{i.toppings.join(', ')}}</p>
-			<p>
-			<label for="textEdit">Pizza name:</label>
-			<input id="textEdit" type="text" ng-model="newPizza[0].name"/>
-			</p>
-			<img src="/tinderNo.png" ng-click="getPizza()"/>
-			<img src="/tinderYes.png" ng-click="storePizza(newPizza[0].name)"/>
-		</div>
-		
-		<hr>
-		
-		<div ng-repeat="pizza in konwnPizzas">
-			<strong>{{ pizza.name }}</strong>
-			<button ng-click="orderPizza($index)">Order</button>
-			<ul>
-				<li ng-repeat="i in pizza.toppings track by $index">{{ i }}</li>
-			<ul>
-		</div>
-	</div>
+	</section>
 </body>
 </html>
